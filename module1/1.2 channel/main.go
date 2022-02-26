@@ -12,7 +12,7 @@ func main() {
 	go func() {
 		var i = 0
 		ticker := time.NewTicker(1 * time.Second)
-		for _ = range ticker.C {
+		for range ticker.C {
 			select {
 			case <-done:
 				return
@@ -24,8 +24,7 @@ func main() {
 	}()
 
 	go func() {
-		ticker := time.NewTicker(1 * time.Second)
-		for _ = range ticker.C {
+		for {
 			select {
 			case <-done:
 				return
